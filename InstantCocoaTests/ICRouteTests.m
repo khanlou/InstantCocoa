@@ -35,7 +35,7 @@
 - (void)testBasicRouting {
     ICRoute *forumListRoute = [ICRoute routeWithPath:@"/forums"];
     
-    XCTAssertTrue([forumListRoute canHandlePath:@"/forums"], @"A properly spelled route should not be handled");
+    XCTAssertTrue([forumListRoute canHandlePath:@"/forums"], @"A properly spelled route should be handled");
     XCTAssertFalse([forumListRoute canHandlePath:@"/forum"], @"A differently spelled route should not be handled");
     XCTAssertFalse([forumListRoute canHandlePath:@"/forums/10"], @"A path with too many components should not be handled");
 }
