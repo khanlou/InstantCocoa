@@ -1,12 +1,10 @@
-## Reflection
-
 Many of Instant Cocoa's capabilities come from the ability to inspect a class's properties at runtime. Classes that are *inspectable* conform to the `ICInspectable` protocol, which contains only one method.
 
 	+ (NSDictionary*)properties;
 
-It returns a dictionary that has strings for keys and instances of `ICPropertyAttributes` as values. 
+It returns a dictionary that has strings for keys and instances of `ICPropertyAttributes` as values.
 
-### ICPropertyAttributes
+## ICPropertyAttributes
 
 The `ICPropertyAttributes` class stores all the metadata about a property. For example, if a property were annotated:
 
@@ -25,7 +23,7 @@ The `ICPropertyAttributes` class stores all the metadata about a property. For e
 * `getter` (SEL) - the getter for the property. In the above example, this value would be `"username"`
 * `setter` (SEL) - the setter for the property. Read-only properties return NULL. In the above example, this value would be `"setUsername:"`
 
-### ICModelInspector
+## ICModelInspector
 
 *This class's name will change to `ICObjectInspector` soon.*
 
@@ -39,6 +37,6 @@ It returns the `properties` dictionary for that class.
 
 It currently does not return computed properties, but this may change.
 
-#### Cache
+### Cache
 
 Properties are currently cached with a static `NSCache`. Currently, there isn't a public way to clear the cache.

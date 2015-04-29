@@ -1,5 +1,3 @@
-## Resource Gateway
-
 Model objects live locally as well as remotely. Instant Cocoa has affordances for manipulating objects remotely.
 
 The REST-based resource model corresponds to the entity model quite well, so each `ICModel` instance has a **resource gateway**. This terminology is borrowed from Martin Fowler's Patterns of Enterprise Application Archicture.
@@ -10,7 +8,7 @@ Each class and instance has a resource gateway, represented by the class `ICReso
 
 This corresponds to the REST endpoint `users/1234/follow`.
 
-### HTTP Verbs
+## HTTP Verbs
 
 Passing in an HTTP verb will perform that verb. For example, if you wanted to destroy the remote object, you could invoke:
 
@@ -20,24 +18,24 @@ There are shorthands for all these methods. The category `ICModel+Remote` contai
 
 There are a few ways to customize `ICResourceGateway`:
 
-#### `updateObjectOnCompletion`
+### `updateObjectOnCompletion`
 
 	@property (nonatomic, assign) BOOL updateObjectOnCompletion;
 
 If the model object should update itself after successful completion with the response from the server, set this to `YES`. It defaults to `YES`.
 
-#### `HTTPVerbForCustomActions`
+### `HTTPVerbForCustomActions`
 
 	@property (nonatomic, strong) HTTPVerb *HTTPVerbForCustomActions;
 
 If an action isn't an HTTP verb (such as the `follow` example from above), `ICResourceGateway` defaults to using `HTTPVerbPUT`. This property allows you to customize the verb.
 
-#### `remoteKeypath`
+### `remoteKeypath`
 
 	@property (nonatomic, strong) NSString *remoteKeypath;
 
 This defaults to the value from model (assuming it conforms to `ICRemoteObject`), but it can be overridden in specific cases.
 
-### Injection
+## Injection
 
 It currently doesn't have a protocol (as a means of hooking in customized objects), but this is an addition that would be welcomed.

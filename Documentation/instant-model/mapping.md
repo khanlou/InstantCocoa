@@ -1,14 +1,12 @@
-## Mapping
-
 Mapping to and from JSON is central to working with resources with a remote component. Instant Cocoa can apply attributes from a JSON object to a local domain object.
 
-### ICJSONMapper
+## ICJSONMapper
 
 The `ICJSONMapper` class does the heavy lifting of mapping model objects to and from dictionary representations and JSON representations. It handles serializers, collections, child models, and value objects.
 
 *Warning: This class will probably be broken up into two classes or more in the near future.*
 
-### Dictionary mapping
+## Dictionary mapping
 
 Model objects can be converted to and from dictionaries. You can declare your own objects as Mappable by conforming to the `ICMappable` protocol, which provides two instance methods:
 
@@ -17,7 +15,7 @@ Model objects can be converted to and from dictionaries. You can declare your ow
 
 which convert to and from dictionaries.
 
-#### Mapping to dictionaries
+### Mapping to dictionaries
 
 When converting a model to a dictionary, the names of the properties are preserved as key names. This functionality can be accessed with the method
 
@@ -33,9 +31,9 @@ The mapper loops through each property and checks its value.
 
 After converting each child element to a dictionary-compatible format, the completed dictionary is returned.
 
-Objects graphs with retain cycles currently have undefined behavior. 
+Objects graphs with retain cycles currently have undefined behavior.
 
-#### Mapping from dictionaries
+### Mapping from dictionaries
 
 Mapping from dictionaries is largely similar, but in reverse. It can be found in the method:
 
@@ -50,13 +48,13 @@ For each property on the target object, the input dictionary is checked for a va
 
 After transformation, each value is applied to the target object using key-value coding.
 
-### JSON mapping
+## JSON mapping
 
 JSON Mapping is similar to dictionary mapping, with three additional guarantees. First, all values coming out will be JSON-compatible (meaning they are either numbers, booleans, strings, null, dictionaries, or arrays, and all values going in must also be JSON-compatible. Second, when converting from JSON, values may be fetched from nested objects; the converse also holds, when converting to JSON, values may be placed in nested objects. Lastly, each model has a chance to manipulate the JSON dictionary before mapping, with the method:
 
 	- (void)transformJSONRepresentationBeforeMapping:(NSDictionary**)JSONRepresentation;
 
-#### Mapping to JSON
+### Mapping to JSON
 
 The functionality for mapping to JSON can be accessed in the method
 
@@ -72,7 +70,7 @@ Like with dictionaries, getting the JSON representation of a model involves loop
 
 After each property's value is transformed, the intended location in the JSON dictionary is determined by the `+JSONMapping` provided by the model class, and the mapper will create any intermediate dictionaries that are required to place that value in its intended location. If a key is not in the JSON mapping, it will be assumed to be the same as the property's name.
 
-#### Mapping from JSON
+### Mapping from JSON
 
 Mapping from JSON can be accessed with the method
 

@@ -1,8 +1,6 @@
-## Instant Model protocols
-
 Instant Model's protocols provide flexibility when creating your model objects. Conforming to them will allow objects that don't subclass `ICModel` to continue to work with the rest of Instant Cocoa's infrastructure.
 
-#### ICKeyValueCodable
+### ICKeyValueCodable
 
 The `ICKeyValueCodable` protocol formalizes the existence of Key-Value Coding in protocol form. All `NSObjects` conform to it already, but the `<NSObject>` protocol doesn't provide those methods. Other protocols are dependent on this one, but you won't have to do any work to conform to it.
 
@@ -15,7 +13,7 @@ The `ICKeyValueCodable` protocol formalizes the existence of Key-Value Coding in
 
 In `ICModel`, these don't have an implementation different from one provided by `NSObject`.
 
-#### ICInspectable
+### ICInspectable
 
 `ICInspectable` provides one class method:
 
@@ -27,20 +25,20 @@ This is a dictionary that maps key names to instances of `ICPropertyAttributes`.
 	    return [[[ICModelInspector new] initWithClass:self] properties];
 	}
 
-#### ICMappable
+### ICMappable
 
-The `ICMappable` protocol inherits from `ICKeyValueCodable` and adds two methods for [converting to and from dictionaries](instant-model/mapping).
+The `ICMappable` protocol inherits from `ICKeyValueCodable` and adds two methods for [converting to and from dictionaries](../../instant-model/mapping).
 
 	- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 	@property (nonatomic, copy, readonly) NSDictionary *dictionaryRepresentation;
 
-#### ICJSONMappable
+### ICJSONMappable
 
 The `ICJSONMappable` protocol inherits from `ICMappable`. It adds three required methods. `+JSONMapping` is an NSDictionary that maps local property names to JSON keypaths:
 
 	+ (NSDictionary*)JSONMapping;
 
-With that data, [mapper objects can map to and from JSON](instant-model/mapping), using two other methods in the protocol:
+With that data, [mapper objects can map to and from JSON](../../instant-model/mapping), using two other methods in the protocol:
 
 	- (instancetype)initWithJSONDictionary:(NSDictionary*)JSONDictionary;
 	@property (nonatomic, copy, readonly) NSDictionary *JSONRepresentation;
@@ -49,9 +47,9 @@ And one optional method, in case the server response needs additional manipulati
 
 	- (void)transformJSONRepresentationBeforeMapping:(NSDictionary**)JSONRepresentation;
 
-#### ICRemoteObject
+### ICRemoteObject
 
-Objects that also have a remote component can conform to `ICRemoteObject`. This protocol provides information to [objects that need to know how to access each model as a resource](instant-model/resource-gateway).
+Objects that also have a remote component can conform to `ICRemoteObject`. This protocol provides information to [objects that need to know how to access each model as a resource](../../instant-model/resource-gateway).
 
 It responds to a class method, which corresponds to the singleton resouce, such as `/users`
 

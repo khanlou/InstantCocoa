@@ -1,12 +1,10 @@
-## Instant Inflector
-
 In addition to the singularization and pluralization provided by [InflectorKit](https://github.com/mattt/InflectorKit), Instant Cocoa also provides a class for quickly manipulating strings for use by the runtime.
 
-### The Inflector
+## The Inflector
 
-Instant Cocoa's powerful [introspection and reflection](../instant-model/reflection) capabilities are reliant on the ability to generate strings of specific formats easily. The `ICInflector` class provides that capability.
+Instant Cocoa's powerful [introspection and reflection](../../instant-model/reflection) capabilities are reliant on the ability to generate strings of specific formats easily. The `ICInflector` class provides that capability.
 
-#### Prefixes
+### Prefixes
 
 Classes in Objective-C are usually prefixed with a 2 or 3 letter code representing the author of the class. `ICInflector` includes the capability of automatically stripping these class prefixes so that meaningful information can be extracted from the class name.
 
@@ -14,7 +12,7 @@ Instant Cocoa automatically includes the prefixes `IC` and `NS`.  You can add yo
 
     [[ICInflector sharedInflector] addPrefixes:[NSSet setWithObject:@"SK"]];
 
-#### Property name transformation
+### Property name transformation
 
 An `@property` in Objective-C is usually `llamaCased`, meaning that the first letter of the first word is lowercased, and the first letter of every other word is capitalized. When retrieving from JSON, key names are usually `snake_cased`, meaning that they are lowercase, and joined by underscores.
 
@@ -35,7 +33,7 @@ A category is also provided, for convenience:
 
 	[myString camelCasedString];
 
-#### Pluralization
+### Pluralization
 
 Pluralization and singularization is powered by [InflectorKit](https://github.com/mattt/InflectorKit). It can be invoked as a category on `NSString`:
 
@@ -44,7 +42,7 @@ Pluralization and singularization is powered by [InflectorKit](https://github.co
 
 See the documentation for that library for adding custom pluralizations.
 
-#### Selector Generation
+### Selector Generation
 
 One common use of the inflector is to generate selectors from strings. `ICInflector` provides a method to do that.
 

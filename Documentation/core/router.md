@@ -1,10 +1,8 @@
-## Instant Router
-
 Instant Cocoa's Router allows you to easily map a URL or path to a specific view controller or set of view controllers.
 
-Setting up the router requires creating `ICRoute` objects, and registering them with the `ICRouter` singleton. 
+Setting up the router requires creating `ICRoute` objects, and registering them with the `ICRouter` singleton.
 
-### The Routes
+## The Routes
 
 Route information is stored in objects of type `ICRoute`. Routes have a "matcher" and information about how to present view controllers. A typical route is initialized like so:
 

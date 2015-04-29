@@ -1,10 +1,8 @@
-## Value Objects
-
-While entities (like ICModel) are objects that have an important sense of identity (such as an `objectID`), value objects also live in the model layer, but they don't have that same sense of identity. The only important thing about a value object is what value it contains; it's otherwise interchangeable. 
+While entities (like ICModel) are objects that have an important sense of identity (such as an `objectID`), value objects also live in the model layer, but they don't have that same sense of identity. The only important thing about a value object is what value it contains; it's otherwise interchangeable.
 
 A very practical way of looking at it is that value objects don't get their own row in a database, they usually get represented in a single field of some other object's row.
 
-### Protocol
+## Protocol
 
 Instant Cocoa provides a protocol for value objects, called `ICValueObject`.
 
@@ -14,7 +12,7 @@ The backing object is normally a string or a number (since those are the primary
 
 	@property (nonatomic, readonly) id backingObject;
 
-#### Optional Methods
+### Optional Methods
 
 The `ICValueObject` protocol also includes two optional methods:
 
@@ -23,7 +21,7 @@ The `ICValueObject` protocol also includes two optional methods:
 
 These provide a little extra type information when reading, and Instant Cocoa will reflect on the `backingObject`'s type, and use the appropriate one if it is available.
 
-### Concrete Implementation
+## Concrete Implementation
 
 Instant Cocoa also includes a concrete implmentation of the `ICValueObject` protocol, in a class also named `ICValueObject`.
 

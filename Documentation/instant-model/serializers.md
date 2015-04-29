@@ -1,6 +1,4 @@
-## Serializers
-
-Instant Cocoa uses Serializers to transform string values into Foundation types, like `NSDate` and `NSURL`, which are used during [mapping](instant-model/mapping/).
+Instant Cocoa uses Serializers to transform string values into Foundation types, like `NSDate` and `NSURL`, which are used during [mapping](../../instant-model/mapping/).
 
 A serializer is an object that conforms to the `ICSerializer` protocol, which contains two methods:
 
