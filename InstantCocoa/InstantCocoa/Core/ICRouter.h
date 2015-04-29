@@ -19,14 +19,14 @@ extern NSString * const ICRouterMatchedRouteKey;
 @optional;
 - (UIViewController*)showViewControllerWithKey:(NSString*)viewControllerKey;
 - (void)viewController:(UIViewController*)viewController requiresPopToRootForRoute:(ICRoute*)route;
-- (void) presentViewController:(UIViewController*)viewControllerToPresent forRoute:(ICRoute*)route fromViewController:(UIViewController*)fromViewController;
+- (void)presentViewController:(UIViewController*)viewControllerToPresent forRoute:(ICRoute*)route fromViewController:(UIViewController*)fromViewController;
 
 @end
 
 
 @interface ICRouter : NSObject
 
-+ (instancetype) sharedRouter;
++ (instancetype)sharedRouter;
 
 @property (nonatomic, weak) id<ICRouterDelegate> delegate;
 
